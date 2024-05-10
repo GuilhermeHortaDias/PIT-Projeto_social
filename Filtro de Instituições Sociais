@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtro de Instituições</title>
+</head>
+<body>
+    <h2>Filtro de Instituições</h2>
+    <form method="POST">
+        <label for="filtro">Selecione uma opção:</label>
+        <select name="filtro" id="filtro">
+            <option value="ambiental">Ambiental</option>
+            <option value="religioso">Religioso</option>
+            <option value="social">Social</option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <?php
+    // Verifica se o formulário foi submetido
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Verifica se a opção selecionada é "social"
+        if ($_POST["filtro"] == "social") {
+            // Exibe a lista de instituições sociais
+            echo "<h3>Instituições Sociais</h3>";
+            echo "<ul>";
+            echo "<li>";
+            echo "<strong>Nome:</strong> Plataforma de Projetos Sociais<br>";
+            echo "<strong>Descrição:</strong> Plataforma de Projetos Sociais a fim de divulgar e criar um acesso mais direto a doadores e instituições e ONGs.";
+            echo "</li>";
+            // Adicione mais instituições aqui, se necessário
+            echo "</ul>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+//
