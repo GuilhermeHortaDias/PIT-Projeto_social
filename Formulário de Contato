@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+<body>
+    <h1>Company Name</h1>
+    <img src="caminho_para_a_foto_da_empresa.jpg" alt="Company Photo">
+    <p>Description of the company...</p>
+    
+    <h2>Contact Us</h2>
+    <form action="process_form.php" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="subject">Subject:</label><br>
+        <input type="text" id="subject" name="subject" required><br><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+//
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+    
+    $to = "seu_email@empresa.com";
+    $subject = "Novo contato: " . $subject;
+    $body = "Nome: $name\nEmail: $email\nMensagem:\n$message";
+    
+    if (mail($to, $subject, $body)) {
+        echo "<p>Mensagem enviada com sucesso!</p>";
+    } else {
+        echo "<p>Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente mais tarde.</p>";
+    }
+}
+?>
